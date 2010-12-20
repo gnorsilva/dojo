@@ -6,7 +6,7 @@ public class BADRacer implements Racer {
 	private int targetPosition;
 	
 	@Override
-	public void start(int initialPosition, int targetPosition) {
+	public void start(int initialPosition, int targetPosition){
 		this.initialPosition = initialPosition;
 		this.targetPosition = targetPosition;
 	}
@@ -17,7 +17,7 @@ public class BADRacer implements Racer {
 		int distanceToStop = calculateDistanceToStop(speed);
 		int fuelToStop = (log2(speed * 2)) * 2;
 		
-		if (fuel < fuelToStop) {
+		if (fuel < fuelToStop || (currentPosition + (speed / 2)) > MINES_RIGHT ){
 			return GIVEUP;
 		}
 		
@@ -25,7 +25,7 @@ public class BADRacer implements Racer {
 			return REVERSE;
 		}
 		
-		if (calculateDistanceToStop(speed * 2) > distanceRemaining - (speed * 2) || fuel - 2 < fuelToStop + 2) {
+		if (calculateDistanceToStop(speed * 2) >= distanceRemaining - (speed * 2) || fuel - 2 < fuelToStop + 2) {
 			return DONOTHING;
 		}
 		

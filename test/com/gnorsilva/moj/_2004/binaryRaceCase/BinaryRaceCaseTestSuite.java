@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	BADTest.class,
+	BADRacerTest.class,
 	BADControllerTest.class
 	})
 public class BinaryRaceCaseTestSuite {

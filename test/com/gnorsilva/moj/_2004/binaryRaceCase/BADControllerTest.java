@@ -8,4 +8,11 @@ public class BADControllerTest {
 		
 	}
 	
+	
+//	@Test(expected = RaceOutOfBounds.class)
+//	public void ensureRaceIsWithinBounds() throws RaceOutOfBounds{
+//		bAD.start(Racer.MINES_LEFT - 1 , Racer.MINES_RIGHT);
+//		
+//	}
+	
 }

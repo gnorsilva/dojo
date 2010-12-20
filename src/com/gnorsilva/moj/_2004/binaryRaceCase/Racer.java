@@ -33,6 +33,8 @@ public interface Racer {
 	 * Invoked at the start of a test run.
 	 * @param initialPosition the location on the track where the ship is now. 
 	 * @param targetPosition the coordinate on the track where the ship must move to and stop.
+	 * @throws RaceOutOfBounds 
+	 * @throws RaceOutOfBounds 
 	 */
 	public void start(int initialPosition,int targetPosition);
 

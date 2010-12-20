@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BADTest {
+public class BADRacerTest {
 	
 	BADRacer bad;
 	 
@@ -33,6 +33,7 @@ public class BADTest {
 	@Test
 	public void testNoStart(){
 		assertEquals(Racer.REVERSE, bad.decide(4, 4, 32));
+		assertEquals(Racer.DONOTHING, bad.decide(0, 0, 32));
 	}
 	
 	@Test
@@ -44,6 +45,9 @@ public class BADTest {
 		
 		bad.start(0,13);
 		assertEquals(Racer.AHEAD, bad.decide(0,2,32));
+		
+		bad.start(200,500);
+		assertEquals(Racer.AHEAD, bad.decide(0,8,300));
 	}
 	
 	@Test
@@ -64,8 +68,8 @@ public class BADTest {
 	
 	@Test
 	public void DecideTestGiveUp(){
-//		bad.start(0,8);
-//		assertEquals(Racer.GIVEUP, bad.decide(0,32,32));
+		bad.start(0,100000);
+		assertEquals(Racer.GIVEUP, bad.decide(80000,40010,32));
 //		assertEquals(Racer.GIVEUP, bad.decide(0,16,32));
 //		
 //		bad.start(0,4);
