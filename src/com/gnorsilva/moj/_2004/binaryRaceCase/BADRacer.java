@@ -13,23 +13,49 @@ public class BADRacer implements Racer {
 	
 	@Override
 	public int decide(int currentPosition, int speed, int fuel) {
-		int distanceRemaining = targetPosition - currentPosition;
+		int distanceToTarget = targetPosition - currentPosition;
 		int distanceToStop = calculateDistanceToStop(speed);
-		int fuelToStop = (log2(speed * 2)) * 2;
+		int fuelToStop = getFuelToStop(speed);
 		
-		if (fuel < fuelToStop || (currentPosition + (speed / 2)) > MINES_RIGHT ){
+		if (fuel < fuelToStop 
+				| currentPosition + distanceToStop > MINES_RIGHT
+				| currentPosition + distanceToStop < MINES_LEFT) {
 			return GIVEUP;
 		}
 		
-		if (distanceToStop > (distanceRemaining - speed) || (fuel - 1) <= fuelToStop) {
-			return REVERSE;
+		if ((fuel - 1) < fuelToStop) {
+			return speed < 0 ? AHEAD : REVERSE;
 		}
 		
-		if (calculateDistanceToStop(speed * 2) >= distanceRemaining - (speed * 2) || fuel - 2 < fuelToStop + 2) {
+		
+		if ( speed > 0 ){
+			if (distanceToStop > (distanceToTarget - speed) ) {
+				return REVERSE;
+			}	
+		}
+		
+		if (speed < 0) {
+			if (distanceToStop > (distanceToTarget - speed)
+					& fuel - 2 > fuelToStop + 2) {
+				return REVERSE;
+			}
+
+			if (distanceToStop > (distanceToTarget - speed)
+					& fuel - 2 < fuelToStop + 2) {
+				return DONOTHING;
+			}
+
+			if (fuel - 2 >= fuelToStop - 1) {
+				return AHEAD;
+			}
+		}
+		
+		if (calculateDistanceToStop(speed * 2) >= distanceToTarget - (speed * 2) ||
+				fuel - 2 < fuelToStop + 2) {
 			return DONOTHING;
 		}
 		
-		if (calculateDistanceToStop(speed * 2) <= distanceRemaining - (speed * 2)) {
+		if (calculateDistanceToStop(speed * 2) <= distanceToTarget - (speed * 2)) {
 			return AHEAD;
 		}
 		
@@ -55,5 +81,10 @@ public class BADRacer implements Racer {
 	protected int log2(double num) {
 		return (int) (Math.log(num) / Math.log(2));
 	}
+
+	public int getFuelToStop(int speed) {
+		speed = speed < 0 ? speed * -1 : speed;
+		return (log2(speed * 2)) * 2;
+	}
 	
-}
+}		
