@@ -52,7 +52,7 @@ public class BADRacerTest {
 	}
 	
 	@Test
-	public void DecideToAhead(){
+	public void ahead(){
 		bad.start(0,128);
 		assertEquals(Racer.AHEAD, bad.decide(0,32,32));
 		assertEquals(Racer.AHEAD, bad.decide(0,16,32));
@@ -71,7 +71,7 @@ public class BADRacerTest {
 	}
 	
 	@Test
-	public void DecideToReverse(){
+	public void reverse(){
 		bad.start(0,8);
 		assertEquals(Racer.REVERSE, bad.decide(0,32,128));
 		assertEquals(Racer.REVERSE, bad.decide(0,16,128));
@@ -89,7 +89,7 @@ public class BADRacerTest {
 	}
 	
 	@Test
-	public void DecideToDoNothing(){
+	public void doNothing(){
 		bad.start(0, 32);
 		assertEquals(Racer.DONOTHING, bad.decide(50,-4,7));
 		assertEquals(Racer.DONOTHING, bad.decide(50,-4,8));
@@ -97,7 +97,7 @@ public class BADRacerTest {
 	}
 	
 	@Test
-	public void DecideToGiveUp(){
+	public void giveUp(){
 		bad.start(Racer.MINES_LEFT,Racer.MINES_RIGHT);
 		assertEquals(Racer.GIVEUP, bad.decide(Racer.MINES_RIGHT - 10 ,16,32));
 		assertEquals(Racer.GIVEUP, bad.decide(Racer.MINES_LEFT + 10 ,-16,32));

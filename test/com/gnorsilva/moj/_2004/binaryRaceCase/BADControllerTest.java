@@ -1,18 +1,24 @@
 package com.gnorsilva.moj._2004.binaryRaceCase;
 
+import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Test;
 
 public class BADControllerTest {
-	@Test
-	public void simples(){
-		
+	BADController controller;
+	
+	@Before
+	public void setup(){
+		controller = new BADController(new BADRacer());
 	}
 	
 	
-//	@Test(expected = RaceOutOfBounds.class)
-//	public void ensureRaceIsWithinBounds() throws RaceOutOfBounds{
-//		bAD.start(Racer.MINES_LEFT - 1 , Racer.MINES_RIGHT);
-//		
-//	}
+	@Test
+	public void control(){
+		controller.start(0,1000,0,500);
+		controller.takeAction();
+		assertEquals(1,controller.getSpeed());
+	}
 	
 }
