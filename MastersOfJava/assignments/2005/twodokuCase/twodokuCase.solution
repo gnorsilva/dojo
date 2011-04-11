@@ -1,0 +1,71 @@
+
+/**
+ * 
+ */
+public class TwodokuSolver {
+
+
+    public void solve(TwodokuBoard board) {
+        //
+        // We're not desparate (yet)
+        //
+        boolean desparate=false;
+        //
+        // Repeat until solved 
+        //
+        while (!board.isSolved()) {
+            //
+            // did we make a move ? Not Yet.
+            // 
+            boolean did=false;
+            //
+            // Scan through the board for digit to place.
+            //
+            for (int x=0;x<4;x++) {
+                for (int y=0;y<4;y++) {
+                    //
+                    if (board.isEmpty(x,y)) {
+                        //
+                        // Found one. Determine possabilities.
+                        //
+                        boolean[] b=board.getUsedDigitsForBlock(board.toBlock(x,y));
+                        boolean[] r=board.getUsedDigitsForRow(y);
+                        boolean[] c=board.getUsedDigitsForColumn(x);
+                        //
+                        int sel=-1;
+                        //
+                        // If there is only one choice take it.
+                        // Otherwise abort and hope some other cell can be placed.
+                        // Unless desperate mode is active, then just take one.
+                        //
+                        for (int z=0;z<4;z++) {
+                            if ((!b[z])&&(!r[z])&&(!c[z])) {
+                                if ((sel!=-1)&&(!desparate)) sel=-2;
+                                                        else sel=z;
+                            }
+                        }
+                        //
+                        // Set the digit.
+                        //
+                        if (sel>=0) try {
+                           did=true;
+                           System.out.println(x+","+y+"->"+sel);
+                           board.setDigit(x,y,sel);
+                        } catch (TwodokuBoard.InvalidMoveException ex) {
+                            System.out.println(ex);
+                        }
+                        //
+                    }
+                    //
+                }
+            }
+            //
+            // No changes last run. Switch to desparate mode.
+            //
+            if (!did) desparate=true;
+            //
+        }
+        //
+    }
+
+}

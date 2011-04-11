@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * Implementation class of the Polygon Case.
+ */
+public class PolygonImpl
+{
+	/**
+	 * Builds a convex polygon of nodes by successive assignment of successors.
+	 * All unassigned nodes must be enclosed by the polygon.
+	 * 
+	 * @param nodes set of at least 3 nodes, not all lying on the same line
+	 * @param lineFactory factory which can be used for creating new lines
+	 */
+	public void buildPolygon(Set<Node> nodes, LineFactory lineFactory)
+	{
+		// Create a list of nodes having a well-defined ordering
+		List<Node> list = new ArrayList<Node>(nodes);
+		Collections.sort(list);
+
+		// Choose a suitable node to start with
+		// Do not exclude the start node from further selection
+		Node current = list.remove(0);
+		list.add(current);
+
+		do
+		{
+			Node next = null;
+			Line line = null;
+
+			for (Node node : list)
+			{
+				if (node.equals(current))
+				{
+					continue;
+				}
+
+				if (line != null)
+				{
+					if (line.ptLineDist(node) > 0)
+					{
+						if (line.relativeCCW(node) > 0)
+						{
+							continue;
+						}
+					}
+					else if (line.ptSegDist(node) > 0)
+					{
+						continue;
+					}
+				}
+
+				line = lineFactory.newLine(current, node);
+				next = node;
+			}
+
+			current.setNext(next);
+			list.remove(next);
+			current = next;
+		}
+		while (current.getNext() == null);
+	}
+}

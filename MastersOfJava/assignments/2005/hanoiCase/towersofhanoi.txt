@@ -1,0 +1,34 @@
+1 Inleiding
+
+  Volgens een eeuwen oude legende hangt het lot van de wereld van deze puzzel af. Ergens in Azië 
+  is er een tempel waar priesters bezig zijn met een versie met 64 schijven. Als ze klaar zijn met 
+  hun werk, zal de wereld vergaan. 
+
+  Als de priesters stug doorgaan om het einde van de wereld te veroorzaken, en daarbij de 
+  snelste oplossing gebruiken, en als ze om de seconde een schijf verplaatsen, dan zijn ze nog steeds 
+  2^64-1 seconde bezig, ruwweg zo'n 585 miljard jaar. De priesters zijn dus wel nog even bezig :-)
+
+2 Opdracht
+
+  Implementeer in de klasse TowersOfHanoiImpl de methode 'public void solve(HanoiPuzzle hp)' 
+  welke de gegeven HanoiPuzzle tot een goed einde moet zien te brengen. In de start positie
+  staan alle schijven op de meest linker (source) paal. De bedoeling is om ze allemaal naar
+  de rechter (target) paal te verplaatsen. Hierbij mag je :
+  - maar 1 schrijf tegelijkertijd verplaatsen.
+  - geen schrijf die groter is plaatsen bovenop een kleinere.
+  - een oplossing vinden in minder dan 2^n zetten, waarbij n het aantal schijven is.
+
+3 Voorbeeld
+
+    |  |  |    |  |  |   |  |  |    |  |  |
+    #  |  |    |  |  |   |  |  |    |  |  # 
+   ### |  |   ### #  |   |  # ###   |  | ###
+  ---------- ---------- ---------- ----------
+
+4 Tips
+
+  - 'De Torens van Hanoi' is een klassieke puzzel die recursief efficient is op te lossen.
+  - Als je de HanoiPuzzle naar de standaard uitvoer print krijg je de huidige staat
+    van de puzzel te zien.
+  - Als je over het maximaal aantal zetten heen gaat stopt de puzzel vanzelf.
+    

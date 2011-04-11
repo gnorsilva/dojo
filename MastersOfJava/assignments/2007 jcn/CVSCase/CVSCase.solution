@@ -1,0 +1,75 @@
+/**
+ * This class represents the revision of a file.
+ */
+public class Revision extends BaseRevision
+{
+	public static class CVSImpl
+	{
+		/**
+		 * Restores the revision numbers of the specified sequence of revisions
+		 * such that Revision.getNumber() will return the correct revision numbers.
+		 * 
+		 * @param revisions sequence of revisions of one file, ordered by original
+		 *                  revision numbers.
+		 */
+		public void restoreNumbers(Revision[] revisions)
+		{
+			Revision curr = null;
+
+			for (Revision rev : revisions)
+			{
+				if (curr == null)
+				{
+					rev.branch = "1";
+					rev.version = 1;
+				}
+				else while (curr != null)
+				{
+					if (rev.canBeBranchOf(curr))
+					{
+						curr.branches++;
+						rev.parent = curr;
+						rev.branch = curr.getNumber() + "." + curr.branches * 2;
+						rev.version = 1;					
+						break;
+					}
+					else if (rev.canBeRevisionOf(curr))
+					{
+						rev.parent = curr.parent;
+						rev.branch = curr.branch;
+						rev.version = curr.version + 1;
+						break;
+					}
+					else
+					{
+						curr = curr.parent;
+					}
+				}
+
+				curr = rev;
+			}
+		}
+	}
+	
+	private Revision parent;
+	private int branches;
+
+	private String branch;
+	private int version;
+
+	/**
+	 * Constructs and initializes a revision.
+	 */
+	public Revision(String content)
+	{
+		super(content);
+	}
+
+	/**
+	 * Returns the revision number.
+	 */
+	public String getNumber()
+	{
+		return this.branch + "." + this.version;
+	}
+}

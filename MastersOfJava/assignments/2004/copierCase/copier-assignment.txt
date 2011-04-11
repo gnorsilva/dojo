@@ -1,0 +1,89 @@
+COPIER CASE
+
+1 Introduction
+
+A company has bought a highly advanced Customer Relationship Management
+program which has fully automated Object-to-Database mappings. Yet the
+interface of the application maps to the database so much that for
+all practical purposes the objects are considered intertwined. In some
+cases it is considered desirable to use the objects, but decouple the
+database access. 
+
+The supplier of the CRM solution, however, did not survive the CRM 
+boom. The programmers of the department tried to create a new instance
+of the Record object and manually transfer the content. But after the
+action, they noticed a binary discrepancy between original and copy. 
+
+The company is at a loss. They need a solution which copies the 
+instance content bit-for-bit, yet the interface does not seem to allow
+it. They hired you to solve their problem and hopes are high for a
+solution -- especially after you bragged about doing this in half
+an hour!
+
+2 Assignment
+
+Your assignment is to implement a Copier class. The class has a method
+called copyRecord which is passed an instance of Record. Record is the
+object representation of the CRM system. The method copyRecord must
+copy the instance to a new instance. The instance must be equal in
+content, including the content of any super classes.
+
+   +----------------+
+   | AbstractRecord |
+   +----------------+
+            ^
+            |
+   +----------------+
+   |     Record     |
+   +----------------+
+
+3. Example
+
+The test engine will instantiate Record objects using secret
+hash input. It will then call your copyRecord method to copy
+the instance. The hash keys will be checked for equality. In the 
+copied record it will simply change the name (using setName) and 
+check if the name was not propagated to the original
+instance. Thus:
+
+   Record origRecord = new Record("MSOFJAVA", "Piet Klerkx");
+   Copier copier = new CopierImpl();
+   Record copyRecord = copier.copyRecord(origRecord);
+   if (!origRecord.getHashKey().equals(copyRecord.getHashKey())) {
+      return false;
+   }
+   copyRecord.setName("MSOFJAVA");
+   if (origRecord.getName().equals(copyRecord.getName())) {
+      return false;
+   }
+   return true;
+
+4. Tips
+
+* The Record object and its superclass are serializable!
+* Look in the java.io package for a good solution
+* You CANNOT use file I/O for storage (turned off); eg, use byte 
+  buffers instead
+* You can use the hacker option by hacking the security mechanism, 
+  but this probably takes more than half an hour. It is not advised, 
+  but if you succeed, all the more glory for you! <see below>
+
+Good luck!
+
+-------------> HACKERS ONLY <-------------
+About the security (only read if you're pursuing the hacker option!)
+
+A new record is instantiated by the CRM:
+
+   Record record = new Record("MSOFJAVA", "Piet Klerkx");
+   
+When the hashKey is shown using the following statement:
+
+   System.out.println(record.getHashKey());
+
+Instead of "MSOFJAVA", it reads:
+
+   NTXOKBGL
+
+So it somehow garbles the input.
+-------------> HACKERS ONLY <-------------

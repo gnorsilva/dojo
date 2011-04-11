@@ -1,0 +1,47 @@
+DIRECTORY CASE
+
+1 Introduction
+
+Will Bates of MySoft Inc has created an Operating System including a novel
+file system. Yet Will has been convinced by the new hypes and trends that
+his file system is hopelessly outdated. It uses a flat file structure, is
+a normal tree, doesn't hype... in other words Will wants to do XML!
+
+In order to prepare this, though, he needs you to write a program to get
+out the file references of his proprietary file system. He will give you
+the interface to his Directory system and hopes you can do the job!
+
+2 Assignment
+
+Recursively read out the Directory tree structure and set up a list of all
+files including their full pathnames. You get a Directory interface as input
+and this allows you to navigate the tree structure by opening and closing
+directories, while you can also ask for all the incumbent files and sub-
+directories.
+
+3. Example
+
+INPUT:
+
+	/
+	+-- foldera
+	    +-- alpha
+	    +-- beta
+	    +-- gamma
+	+-- folderb
+	    +-- delta
+	    +-- epsilon
+
+OUTPUT:
+
+	/foldera/alpha
+	/foldera/beta
+	/foldera/gamma
+	/folderb/delta
+	/folderb/epsilon
+
+4. Tips
+
+Recursion helps.
+
+Good luck!

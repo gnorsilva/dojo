@@ -1,0 +1,71 @@
+1 Introduction
+
+The famous application of Zamacom runs on a distributed architecture, meaning
+in this case that the application is deployed on more than one application server. 
+
+In the past the company has known its share of problems with the load of users
+assigned to a server; some servers had 50 users, while others had over 400. Given
+the fact that the application suffers a severe performance hit when more users are
+assigned to a server than a given number, and given the fact that users hampered by 
+a performance hit disconnect and surf to other companies such as Bal.com, the 
+company is more than a little interested in a way of fairly sharing the number of 
+users over the applicable servers.
+
+The old loadbalancer implementation has been sent to the recycle bin. You have been 
+hired to implement a new one. Don't fail them.
+
+2 Assignment
+
+Implement the class LoadBalancerImpl extension of the LoadBalancer interface.
+
+The program will be tested by a series of events fired at the loadbalancer. These
+events always follow the same scenario:
+* a start situation is constructed, complete with servers and users assigned to
+  servers
+* events are fired at the server. The type of events are:
+  - a new user must be assigned to a server
+  - a server goes down (no longer available for users)
+  - a server comes up (newly available to users)
+* the loadbalancer administration is matched to the end situation to see if the
+  correct steps have been taken.
+
+Load balancing adhers to the following rules:
+* assign users to the available servers in a balanced way (lowest utilization 
+  principle)
+* when all servers are equally utilized, the server with the lowest alphabetical 
+  name is used first for assignment (ie, round robin principle)
+* when a server goes down, the users on it are reassigned to available servers.
+  The users are assigned in the same order as they were assigned to the downed 
+  server (the server returns you the users in this order)
+* a downed server is never available
+* all up servers should be available
+
+3 Example
+
+START SITUATION
+===============
+* Server "BlueTooth"
+  - User "Alpha"
+  - User "Beta"
+* Server "RedJaw"
+  - User "Delta"
+
+EVENTS
+======
+-> User "Gamma" enters
+
+END SITUATION
+=============
+* Server "BlueTooth"
+  - User "Alpha"
+  - User "Beta"
+* Server "RedJaw"
+  - User "Delta"
+  - User "Gamma"
+
+4 Hints
+
+You can rely on the following:
+* Server names are unique
+* User names are unique
+* Server implements the Comparable interface

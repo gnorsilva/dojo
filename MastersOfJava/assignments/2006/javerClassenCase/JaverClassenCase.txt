@@ -1,0 +1,40 @@
+1 Inleiding
+
+  KlaverJassen is leuk kaartspel dat vooral bij beginnende spelers nog wel eens verwarring
+  wil veroorzaken over welke kaart nu hoger is. Om hier voorgoed een einde aan te maken
+  besluit Anthony van der Berg er een programma voor te schrijven. Helaas komt hij er niet
+  uit en besluit een echte Java Guru in te huren voor wie dit natuurlijk een eitje is.
+
+2 Opdracht
+
+  Implementeer de methode isHoger(Kleur troef,Kleur gevraagd,Kaart ene,Kaart andere) 
+  welke 'true' moet teruggeven wanneer de ene kaart hoger is dan de andere volgens 
+  de regels van klaverjassen.
+  
+  Of een kaart hoger is dan de andere wordt bepaald door :
+  1) Of de kleur van de kaart van de troef kleur is.
+  2) Of de kleur van de kaart de gevraagde kleur is.
+  3) De volgorde van de kaart.
+  
+  Voor niet troef kaarten is de volgorde : ZEVEN,ACHT,NEGEN,BOER,VROUW,HEER,TIEN,AAS  
+  Voor troef kaarten is de volgorde      : ZEVEN,ACHT,VROUW,HEER,TIEN,AAS,NEGEN,BOER
+  
+  Een troef kaart wint altijd van een gevraagde kaart en van de overige kaarten.
+  Een gevraagde kaart wint altijd van de overige kaarten.
+
+3 Voorbeelden
+
+  Klaver troef, Harten gevraagd : Klaver Negen > Harten Aas -> True 
+  De Klaver Negen is hoger omdat deze dezelfde kleur heeft als de troef kleur.
+  
+  Klaver troef, Harten gevraagd : Harten Negen > Harten Aas -> False 
+  Beiden kaarten zijn niet van de troef kleur. Beiden kaarten zijn wel van de gevraagde
+  kleur. De Aas is het hoogste in de niet troef kaarten volgorde.
+  
+  Klaver troef, Harten gevraagd : Harten Negen > Ruiten Aas -> True
+  De Harten Negen is van de gevraagde kleur. De Ruiten Aas is geen troef en niet gevraagd.
+
+4 Tips
+
+  - Enum's zijn heel handig hierbij, mits je ze goed inzet.
+  - Psst, ook handig: for (Enum e:Enum.values()) { doSomething(e); }

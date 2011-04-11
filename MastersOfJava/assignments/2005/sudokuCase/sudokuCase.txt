@@ -1,0 +1,37 @@
+1) Inleiding
+
+   De Sudoku is een getallen puzzel die de laatste tijd verassend populair geworden is. Het
+   idee van de puzzel is dat je gegeven een bord van 9x9 cellen getallen invult op een 
+   zodanige manier dat een getal slechts 1 keer per kolom, 1 keer per rij en 1 keer per
+   3-bij-3 blok mag voorkomen.
+
+2) Opdracht
+
+   Schrijf een programma dat een Sudoku board controleert op juistheid en correcte oplossing.
+   Dit betekent dat:
+   - het bord altijd 9 bij 9 groot is
+   - het gehele bord geheel is ingevuld met cijfers van 1 tot en met 9
+   - een getal slechts 1 keer mag voorkomen in een rij
+   - een getal slechts 1 keer mag voorkomen in een kolom
+   - een getal slechts 1 keer mag voorkomen in een 3x3 blok (let op: er zijn 9 van deze 
+     blokken gelijk verdeeld over het bord!)
+
+3) Voorbeeld
+
+   2 1 9  3 5 7  4 6 8    Het linker bord is correct.    2 1 9  3 5 7  4 6 8
+   8 6 3  1 4 2  5 9 7    Iedere rij en iedere kolom     8 6 3  1 4>2 >5 9 7
+   4 7 5  8 9 6  3 2 1    bevatten slechts 1 maal de     4 7 5  8 9 6  3 2 1    
+                          digits 1..9, Idem voor 
+   9 5 4  2 3 1  7 8 6    ieder 3x3 blok                 9 5 4 >2 3 1  7 8 6
+   1 3 7  6 8 5  2 4 9                                   1 3 7  6 8>2 >5 4 9
+   6 2 8  9 7 4  1 3 5    Het rechter bord is incorrect. 6 2 8  9 7 4  1 3>5
+                          Twee 3x3 cellen bevatten      
+   5 8 1  4 6 3  9 7 2    dubbele getallen en twee       5 8 1  4 6 3  9 7 2
+   7 4 6  5 2 9  8 1 3    rijen bevatten ook twee        7 4 6  5 2 9  8 1 3
+   3 9 2  7 1 8  6 5 4    dubbelen.                      3 9 2  7 1 8  6 5 4
+
+4) Tips
+
+   - Je kan het SudokuBoard printen met toString()
+   - Pas op ! Sommige blonde studenten spelen Sudoku's met letters. 
+   

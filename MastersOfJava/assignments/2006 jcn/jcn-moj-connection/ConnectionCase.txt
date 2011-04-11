@@ -1,0 +1,38 @@
+1 Inleiding
+
+  DataSources, Connecties, Statements, ResultSets. Worden jullie
+  daar ook gek van? In deze opdracht moet een connectie met een
+  door de klant aangekocht product gemaakt worden. De API lijkt
+  gelukkig veel op JDBC...
+
+  Natuurlijk heeft de klant zijn eigen standaards en richtlijnen
+  omtrent foutafhandeling. En dat maakt het er allemaal niet
+  makkelijker op... De klant eist namelijk dat als er in de API
+  meerdere fouten optreden de EERSTE fout wordt doorgegeven. Oeps.
+
+2 Opdracht
+
+  Schrijf de getAll() methode. Zorg dat statements and connecties
+  netjes gesloten worden. Als een ConnectionException optreedt,
+  throw dan een DatabaseException (met cause de ConnectionException
+  - je wil tenslotte wel weten wat de oorzaak is). In het geval dat
+  de data source een null connection teruggeeft, throw dan een
+  DatabaseException met een mooie message.
+  
+  Zorg er ten slotte voor dat als er meerdere excepties gethrowd
+  worden, de juiste wordt doorgegeven aan de aanroepende routine.
+
+3 Voorbeeld
+
+  Connection connection = this.dataSource.getConnection();
+  connection.open();
+  Statement statement = connection.createStatement(QUERY);
+  Collection<User> users = processResults(statement.execute());
+  statement.closeStatement();
+  connection.close();
+  
+  (Maar nu met foutafhandeling!)
+
+4 Tips
+
+  Blijkbaar moet je weten wat de eerste exceptie is...

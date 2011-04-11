@@ -1,0 +1,39 @@
+/**
+ * Leaf represents a leaf of the Cannabis plant.
+ */
+
+public class Leaf {
+
+	/** Holds the generic name of the leaf */ 
+	private String myBrand;
+	
+	public Leaf(String brand) {
+		myBrand=brand;
+	}
+	
+	public String getBrand() {
+		return myBrand;
+	}
+	
+	public String toString() {
+		return "Leaf("+myBrand+")";
+	}
+	
+	//
+	// By overriding both equals and hashcode
+	// we redefine the object equality behaviour
+	// so we fool the InAccurate TM Inventory 
+	// system.
+	//
+	
+	public boolean equals(Object o) {
+	        if (o instanceof Leaf) {
+			return ((Leaf)o).getBrand().equals(myBrand);
+		} else return false;
+	}	
+    
+	public int hashCode() {
+        	return myBrand.hashCode();
+	}
+
+}

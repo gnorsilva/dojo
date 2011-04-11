@@ -1,0 +1,40 @@
+1 Introduction
+  
+  Erik has had a mental overload and has turned into a vegetable. Fortunately
+  an experimental procedure can save his life. In this procedure each of his
+  braincells will be investigated and marked as good or bad, after which the
+  bad cells are removed using high precision MicroWaves. The removal procedure
+  is automatic, but each braincell must be judged by hand.
+  
+  DrBernard, a well known brain surgeon, will perform this marking task. He will
+  use InnerSpace technology to investigate each braincell and judge it. It is
+  good that DrBernard has excellent navigation skills, because Eriks brain can
+  be a mess at times.
+  
+2 Assignment
+
+  Implement DrBernards algorithm to navigate Eriks brain and visit and mark all 
+  the bad cells. (Marking the good cells is optional :-) Please note that 
+  DrBernard needs to visit all the cells from close by, so don't rely on long range
+  scanners.
+  
+3 Example 
+
+  There are 3 brain cells called 'Love','Hate' and 'Sex' and they form a triangle.
+  So 'Love' is connected to 'Sex' and 'Hate', 'Sex' is connected to 'Love' and 
+  'Hate' etcetera.
+  
+  DrBernard starts in braincell 'Love' and marks it as good. Then he chooses 
+  another cell (at random) and proceeds to 'Sex'. DrBernard also marks this cell
+  as good. Then he will proceed to 'Hate' as 'Love' was already marked. DrBernard
+  marks this cell as bad. Then there are no more cells to investigate as all cells
+  are visited. DrBernard returns from InnerSpace by sending a NULL command.
+  
+4 Hints
+
+  - Use the MarkerBag to check if you have already visited a cell. 
+  - If there are no more cells to visit you're probably done, not ?
+  - Use the toString() of BrainCell for a full description.
+  - The InnerSpace device has a limited amount of enery. After approx.
+    100 moves the safety protocols will kick in.
+  

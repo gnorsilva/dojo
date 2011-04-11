@@ -1,0 +1,60 @@
+/**
+ * 
+ */
+public class SudokuSolutionChecker {
+
+	public void check(SudokuBoard board) throws InvalidSolutionException {
+		//
+		// Check board size
+		//
+		if (board.getHeight()!=9) throw new InvalidSolutionException("No 9x9");
+		if (board.getWidth()!=9) throw new InvalidSolutionException("No 9x9");
+		//
+		// Check Rows and Cols
+		//
+		for (int t=0;t<9;t++) {
+			boolean[] r=new boolean[9];
+			boolean[] c=new boolean[9];
+			for (int z=0;z<9;z++) {
+				char ch=board.getDigitAt(t,z);
+				if (ch<'1') throw new InvalidSolutionException("Invalid Digit");
+				if (ch>'9') throw new InvalidSolutionException("Invalid Digit");
+				ch=board.getDigitAt(z,t);
+				if (ch<'1') throw new InvalidSolutionException("Invalid Digit");
+				if (ch>'9') throw new InvalidSolutionException("Invalid Digit");
+				//
+				int v1=Integer.parseInt(""+board.getDigitAt(t,z))-1;
+				int v2=Integer.parseInt(""+board.getDigitAt(z,t))-1;
+				//
+				//
+				if (r[v1]) throw new InvalidSolutionException(t+","+z+" has duplicate "+(v1+1));
+				if (c[v2]) throw new InvalidSolutionException(z+","+t+" has duplicate "+(v2+1));
+				//
+				r[v1]=true;
+				c[v2]=true;
+				//
+			}			
+		}
+		//
+		// Check 3x3 cells.
+		//
+		for (int t=0;t<3;t++) {
+			for (int z=0;z<3;z++) {
+				boolean[] c=new boolean[9];
+				for (int x=0;x<3;x++) {
+					for (int y=0;y<3;y++) {
+						int value=Integer.parseInt(""+board.getDigitAt(t*3+x,z*3+y))-1;
+						//
+						if (c[value]) throw new InvalidSolutionException("Grid "+t+","+z+", Cell "+x+","+y+" has duplicate : "+(value+1)); 
+						c[value]=true;
+						//
+					}
+				}			
+			}
+		}
+		//
+		// Mission Accompli !
+		//
+	}
+
+}

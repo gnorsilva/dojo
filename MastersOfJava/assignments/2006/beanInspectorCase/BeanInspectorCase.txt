@@ -1,0 +1,44 @@
+1 Inleiding
+
+  De architect van dit project is het serieus in zijn bol geslagen. Hij is naar een Ruby
+  seminair geweest en sinds dien moet alles dynamisch en los gekoppeld. Het gaat zelfs zo
+  ver dat hij alle types en type-checks achter zich wil laten en alles at runtime wil 
+  bepalen. Zijn motto : 'alles is een object, en dat is genoeg !'. Hah!. 
+  
+  Voor jou nu de taak om er achter te komen wat de eigenschappen zijn van de objecten
+  die de architect aan je geeft. Zodat je ze 'at runtime' kunt aanroepen.. Gelukkig weet 
+  je dat alle objecten volgens de Java Bean specificatie zijn geschreven.
+
+2 Opdracht
+
+  Implementeer de BeanInspector welke de publieke properties van een gegeven object moet 
+  bepalen. Iedere property moet worden opgeslagen in een BeanPropery. Een property heeft 
+  een naam een type (de class) en een boolean die aangeeft of hij readonly is.
+  
+  Een methode die begint met 'get' is mogelijkerwijs een property. Dit natuurlijk alleen
+  als er ook nog wat achter staat (getName) en er een return type is. Houd in de gaten dat
+  bij een property naam de eerste letter altijd een kleine is. 
+  
+  Voor een 'set' methode, deze kan alleen een property zijn als er ook een 'get' met
+  dezelfde naam erbij hoort en van het zelfde type is. 
+  
+  De getter voor een boolean property mag ook beginnen met 'is'.
+
+3 Voorbeeld
+
+  Gegeven de volgende klasse
+
+  public class Gadget extends Object {
+    private String name;
+    public String getName() { return name; }
+    public void   setName(String name) { this.name=name; } 
+  }
+  
+  Deze bevat 1 overduidelijke property, de 'name' van het gadget welke van het type
+  java.lang.String is en niet readonly is. De andere property is de 'class' welke 
+  onderdeel uitmaakt van Object. Deze is readonly en van het type Class.
+
+4 Tips
+
+  - Het schijnt dat Sun al eens wat hulp classjes heeft gemaakt. Maar waar zouden ze zitten ?
+  - Bean bean java.beans vertel eens wat je hebt geziens.

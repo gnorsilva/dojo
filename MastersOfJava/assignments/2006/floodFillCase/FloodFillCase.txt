@@ -1,0 +1,30 @@
+1 Inleiding
+
+  Dat CodeRuler van IBM is best wel lollig dacht Bill. Wereld Overheersing. Paardjes. 
+  Kasteeltjes. Lollig. Alleen ik wil wel winnen. En dat is nog niet zo makkelijk. 
+  
+  Om CodeRuler efficient te kunnen spelen moet je een goed vlak vul algoritme hebben.
+  En aangezien Bill ogenschijnlijk meer geld dan wijsheid heeft, heeft hij jou ingehuurd
+  om voor hem uit te zoeken hoe je een efficient vlak vul algoritme maakt.
+
+2 Opdracht
+
+  Implementeer een zogenaamd 'floodfill' algoritme waarbij vanaf een gegeven coordinaat
+  alle aaneensluitende niet gezette pixels gezet worden.
+
+3 Voorbeeld
+
+  Met de linker bitmap als bron en coordinaten (2,2) moet het resultaat de
+  rechter bitmap zijn :
+  
+  Voor       Na         . is een niet gezette pixel.
+  ......     ......     x is een gezette pixel.
+  .xxxx.     .xxxx.     S geeft het start coordinaat aan 
+  .xS.x.     .xxxx.       (op een niet gezette pixel)
+  .x..x.     .xxxx.
+  .xxxx.     .xxxx.
+  ......     ......
+
+4 Tips
+
+  - Recursie is best wel handig voor dit soort problemen. 

@@ -1,0 +1,38 @@
+1 Introduction
+
+  A well known company has decided to implement their own web based Time Registration
+  System (TRS) using state of the art technology like Hibernate and Tapestry. The user
+  interface looks great, database connectivity is a breeze. But there are problems with
+  the core functionality.
+  
+  They have hired you to solve a specific problem regarding dates and calendars.
+  
+  Hours are registered on a weekly basis, starting on monday and ending on sunday. Each
+  week has a week number and the primary navigation in the application is done using 
+  years, months and weeks. They have defined an interface and a series of unit tests to
+  check correct functioning, but the actual implementation proved too hard for them.
+  
+2 Assignment
+
+  Implement the WeekNavigator interface and make it pass the unit tests. 
+  A week starts on monday and ends on sunday. 
+  
+3 Example 
+
+  The user logs in on the first of June 2004. This is a Tuesday. The GUI makes a call
+  to the WeekNavigator setting the date, initialising the WeekNavigator. Then the hour
+  sheet of the current week must be displayed. The GUI asks for the starting date of 
+  the week. The WeekNavigator returns that weeks monday (31st May).
+  
+  Then the user may navigate through his hour sheets by moving to the previous or next 
+  week, month or year. The WeekNavigator will return the correct week number, month, 
+  year and start date of the week.
+
+4 Tips
+
+  - Make use of java.util.Date and java.lang.Calendar
+  - In Java a week starts on sunday, not on monday !
+  - Calendar makes extensive use of constants to set/get and add specific values.
+    For example : myCalendar.set(Calendar.MONTH,12);
+  - Use Ctrl+Space 
+  

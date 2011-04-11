@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Editable: DrBernard.java
+Monospaced: True
+TestClass: BrainCaseTester
+SubmitClass: BrainCaseTester
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+Solution: brainCase.solution
+Author: E.Hooijmeijer
+AuthorURL: http://www.2en40.nl
+Fun: 4
+Quality: 4
+Difficulty: 3
+Hint: Is your brain big enough ?
+Catagory: Algorithm : Graph traversal.
+Icon: brain-icon.gif

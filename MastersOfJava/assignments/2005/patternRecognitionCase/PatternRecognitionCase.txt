@@ -1,0 +1,89 @@
+1 Introduction 
+
+  The NSA, the National Security Agency, has contacted you
+  to do a Proof of Concept for a decoder tester. The NSA has
+  discovered that people more and more use simple encoding
+  technics to encode their messages. And they want to read
+  these messages...
+
+  So they've ordered an application that enables them to
+  simply add new decoders, preferably to a properties file.
+  Since this is just a Proof of Concept it's not yet necessary
+  to read the decoders from a file. They've decided to test
+  the concept with three encoders that you have to hard code
+  into the test application.
+
+  The encoders are quite strait forward. Take a text and
+  change it in a subtle way to create hidden messages. Or
+  create a custom text that incorporates the message. Because
+  the receiver still has to decode these messages, the
+  encodings are always very simple.
+
+  They've decided to test the following encodings:
+  - All capital letters in a text.
+  - The letters of a word that starts with a vowel, but not
+    the vowel itself.
+  - Words that are only letter.
+
+2 Assignment
+
+  A framework for the PoC has already been made. All you 
+  have to do is code the Decoders. You have to decide how 
+  to go about selecting the letters you want to keep in the 
+  message. The framework will provide the results of your
+  decoders on the console. 
+
+  The decoders should do this:
+  1) All capital letters:
+     Select all capital letters, discarding everything else.
+  2) Vowel prefixed words:
+     Select words that start with a vowel, discarding the vowel
+     and every word that does not start with a vowel. In this
+     respect, the following characters are understood to be
+     vowels: a, e, i, o, u, y, A, E, I, O, U, Y.
+  3) Single letter words:
+     Words that consist of a single letter, for instance I.
+     
+  A generic Decoder based upon regular expressions has been 
+  provided allowing an efficient implementation. No more
+  StringTokenizers for you ! Hah !    
+
+3 Examples
+
+  1) All capital letters:
+     Text   : Brains Or Muscles are a Bore.
+     Decoded: bomb
+     
+  2) Vowel prefixed words:
+     Text   : Up we go. Are going down too. Is aid we need?
+              Ye 'ant the lead.
+     Decoded: president
+     
+  3) Single letter words:
+     Text   : B is for blue, she is for U. S is a sage,
+              in search of an H.
+     Decoded: bush 
+
+4 Tips
+
+  1) You must decide: select what to keep, or select what to throw away.
+  2) The pattern is clear, but how about the expression?
+  3) Afraid of Regular Expressions ? Try to implement and add your own 
+     Decoder. Ofcourse your fingers will hurt after this assignment :-)
+  4) The java.util.regex.Pattern Javadoc actually contains a nice summary 
+     of writing regular expressions. Also for your benefit the following 
+     constants have been provided : 
+
+     CAPITAL            = "[A-Z]";
+     NOT_CAPITAL        = "[^A-Z]";
+     SPACE              = " ";
+     VOWELS             = "[aAeEiIuUoOyY]";
+     NOT_VOWELS         = "[^aAeEiIuUoOyY]";
+     PUNCTUATION        = "[ .!?;.,'\"()\\-]";
+     NORMAL_LETTERS     = "[a-zA-Z0-9']";
+     NOT_NORMAL_LETTERS = "[^a-zA-Z0-9']";
+     OR                 = "|";
+     CHOICE_START       = "[";
+     CHOICE_END         = "]";
+     MULTIPLICITY       = "*";
+     TWO_OR_MORE        = "{2,}";     

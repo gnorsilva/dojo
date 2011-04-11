@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Editable: BlackSheepBrain.java
+Monospaced: True
+TestClass: KuddeCase
+SubmitClass: KuddeCase
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+Author: E.Hooijmeijer
+DisplayName: Animal Farm 
+Icon: sheep-icon.png
+Author: E.Hooijmeijer
+AuthorURL: http://www.2en40.nl
+Fun: 4
+Quality: 2
+Difficulty: 3
+Hint: Nurture your herding instincts.
+Catagory: Algorithm, Puzzle solving.
