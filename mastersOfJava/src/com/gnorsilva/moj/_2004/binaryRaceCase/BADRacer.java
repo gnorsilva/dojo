@@ -2,6 +2,7 @@ package com.gnorsilva.moj._2004.binaryRaceCase;
 
 public class BADRacer implements Racer {
 	
+	@SuppressWarnings("unused")
 	private int initialPosition;
 	private int targetPosition;
 	
