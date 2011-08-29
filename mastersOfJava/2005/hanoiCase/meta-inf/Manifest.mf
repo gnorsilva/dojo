@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Editable: TowersOfHanoiImpl.java
+Monospaced: True
+TestClass: HanoiTester
+SubmitClass: HanoiTester
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+SponsorImage: sponsor-image.gif
+Icon: icon-image.gif
+Author: E.Hooijmeijer
+DisplayName: Towers of Hanoi
+Solution: hanoiCase.solution
+AuthorURL: http://www.ctrl-alt-dev.nl
+Fun: 3
+Quality: 5
+Difficulty: 4
+Hint: A classic revisited.
+Catagory: Recursive Algorithms

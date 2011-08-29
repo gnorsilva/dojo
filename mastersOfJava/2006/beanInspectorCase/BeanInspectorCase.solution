@@ -1,0 +1,29 @@
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BeanInspectorImpl {
+
+	public List<BeanProperty> inspect(Object bean) {
+		//
+		List<BeanProperty> results=new ArrayList<BeanProperty>();
+		if (bean==null) return results;
+		//
+		try {
+			BeanInfo bi=Introspector.getBeanInfo(bean.getClass());
+			PropertyDescriptor[] pd=bi.getPropertyDescriptors();
+			for (int t=0;t<pd.length;t++) {
+				results.add(new BeanProperty(pd[t].getName(),pd[t].getWriteMethod()==null,pd[t].getPropertyType()));
+			}
+			return results;
+		} catch (IntrospectionException ex) {
+			ex.printStackTrace();
+			return results;
+		}
+		//
+	}
+
+}

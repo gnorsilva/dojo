@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Editable: BeanInspectorImpl.java
+Monospaced: true
+TestClass: BeanInspectorTester
+SubmitClass: BeanInspectorTester
+TestClassTimeout: 15
+SecurityDelegate: ReflectionAllowedSecurity
+SubmitClassTimeout: 20
+Author: E.Hooijmeijer
+DisplayName: Bean Inspector
+Icon: icon.png
+SponsorImage: sponsor.png
+Solution: BeanInspectorCase.solution
+AuthorURL: http://www.ctrl-alt-dev.nl
+Fun: 4
+Quality: 5
+Difficulty: 3
+Hint: To bean or not to bean.
+Catagory: API Knowledge

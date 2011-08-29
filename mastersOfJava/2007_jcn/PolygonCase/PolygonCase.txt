@@ -1,0 +1,53 @@
+1 Inleiding
+
+  Deze case vereist inzicht in de oriëntatie van punten en lijnen
+  of segmenten in het platte vlak.
+
+2 Opdracht
+
+  Gegeven is een verzameling knooppunten in een standaard (x,y)
+  coördinaten stelsel zodanig dat...
+  i.   alle knooppunten verschillend zijn
+  ii.  de verzameling tenminste drie knooppunten bevat
+  iii. niet alle knooppunten op een en dezelfde lijn liggen
+
+  Verbind drie of meer knooppunten tot een veelhoek zodanig dat...
+  i.   zo weinig mogelijk knooppunten deel uitmaken van de veelhoek
+  ii.  de overige punten binnen in de veelhoek zijn opgesloten
+  
+  Anders gezegd, bepaal het convex omhulsel van alle knooppunten.
+  
+  Dit dient bewerkstelligd te worden door de constructie van een
+  circulaire keten van opeenvolgende knooppunten. Aan elk knooppunt
+  wordt ten hoogste één opvolgend knooppunt toegewezen.
+  Het staat je vrij om de keten linksom of rechtsom te construeren.
+  
+  Om je een eindje op weg te helpen voorziet de implementatie reeds
+  in de selectie van een geschikt knooppunt om de keten te starten.
+  Selecteer vanaf hier per knooppunt een geschikte opvolger.
+  
+3 Voorbeeld
+
+  Voor de volgende 9 knooppunten
+  
+  O    O    O
+
+  O    O    O
+
+  O    O    O
+
+  kan een keten van 8 knooppunten geconstrueerd worden waarin één
+  overblijvend knooppunt opgesloten ligt:
+
+  O -> O -> O
+  |         |
+  O    O    O     
+  |         |
+  O <- O <- O
+
+4 Tips
+
+  De MoJ software staat helaas niet toe dat classes uit de package
+  java.awt.geom geladen worden, waardoor nuttige functies in de
+  Line2D class niet gebruikt kunnen worden. Gelukkig voorziet de
+  case in een Line class met vergelijkbare functionaliteit.

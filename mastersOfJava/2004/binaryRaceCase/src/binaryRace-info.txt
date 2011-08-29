@@ -1,0 +1,67 @@
+1 Introduction
+
+  In contradiction with the modern laws of physics the Binary Acceleration Drive (BAD) has an
+  inverted acceleration curve. It means that for each unit of enery put into it it doubles its
+  speed. This means that it can easily reach light speed (or Integer.MAX_INT) at low costs. The
+  disadvantage is of course that it taken an infinite amount of energy to accelerate out of a 
+  full stop. Two times zero is... zero. So for that, the clever engineers used conventional
+  thrusters.
+  
+  Ofcourse a ship equipped with BAD could easily race out of control. For this reason a top-secret
+  ship with an experimental computer program will be put together. Guess who'd they ask to write
+  the progam ? You that is !
+  
+2 Assignment
+
+  Write a program that pilots the ship from any position on the track (a line) to a specified
+  target location. Your ship may have an initial speed. 
+  
+  The control interface is really simple. You have a choice of 3 moves each control cycle :
+  DONOTHING, AHEAD or REVERSE. There is a fourth, in case of emergency, which is GIVEUP which
+  will trigger the self-destruct mechanism.
+  
+  The control interface is defined in a java interface called Racer. You will implement your
+  algorithm in the class RacerImpl which implements this interface. There are 3 methods :
+  - void start(int startPosition,int targetPosition) : which tells you where you are and where 
+    you must go to. 
+  - int decide(int currentPosition,int speed,int fuel) : this method is invoked each control
+    cycle and gives you your current position, speed and fuel reserve. You should return any
+    of the four constants (DONOTHING,AHEAD,REVERSE or GIVEUP)
+  - void finish() : is called when you succesfully have reached the target destination.
+    
+  Your ship uses fuel to speed up and slowdown, but also to maintain the computer systems and
+  communication. The fuel usage for each of the moves is as follows :
+  DONOTHING : 1 fuel
+  AHEAD     : 2 fuel
+  REVERSE   : 2 fuel
+  GIVEUP    : Ends game.
+  If the fuel runs out the computer and its progam will cease to function ending the run.
+  
+  The destination is reached when you arrive with a speed of 0 at your destination 
+  coordinates.
+  
+  The race track is a piece of linear space measured from coordinates 0 til 100000. As a 
+  safety precaution mine fields have been deployed at the edges of the track in case of 
+  software malfuction.
+  
+3 Example
+
+  The first test case asks you to navigate from position 0 to position 8 with an initial 
+  speed of 0 and a fuel reserve of 16. A typical solution for this case would be :   
+         
+  Turn #1 0,0,16 : AHEAD     -> Speed 0->1, New Position -> 0 + 1  
+  Turn #2 1,1,14 : AHEAD     -> Speed 1->2, New Position -> 1 + 2
+  Turn #3 3,2,12 : DONOTHING -> Speed 2->2, New Position -> 3 + 2
+  Turn #4 5,2,11 : REVERSE   -> Speed 2->1, New Position -> 5 + 1
+  Turn #5 6,1, 9 : REVERSE   -> Speed 1->0, New Position -> 6 + 0
+  Turn #6 6,0, 7 : Finish !
+  
+4 Tips
+
+  - Your new speed is calculated first. Second your new position is calculated.
+  - When you do nothing the next position is calculated as follows :
+    nextPosition = currentPosition + speed;
+  - Powers of two have useful properties.
+  - Use your glass ball to predict the future.
+
+  

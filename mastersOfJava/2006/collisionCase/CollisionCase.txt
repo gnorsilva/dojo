@@ -1,0 +1,27 @@
+1 Inleiding
+
+  Na de zoveelste Command&Conquer kloon besluit EA eindelijk eens wat nieuws uit te brengen :
+  ArkaPong - en combi van het klassieke Pong en Arkanoid. Geen geweldig idee, maar het is weer eens
+  wat anders. Essentieel bij ArkaPong is een correcte botsings detectie tussen de ballen. Raad
+  eens wie dat klusje mag klaren :-)
+
+2 Opdracht
+
+  Implementeer de routine 'collision' welke true moet terug geven wanneer de 2 gegeven ballen
+  in botsing zijn. In botsing betekent dat of de randen van de bal elkaar raken of dat ze elkaar 
+  deels overlappen.
+
+3 Voorbeeld
+
+  Bal 1 heeft een straal van 5 pixels en staat op positie 0,0.
+  Bal 2 heeft een straal van 5 pixels en staat op positie 10,10.
+  De afstand tussen de twee middelpunten is 14.14 pixels. Ze botsen niet.
+  
+  Bal 1 heeft een straal van 10 pixels en staat op positie 0,0.
+  Bal 2 heeft een straal van 5 pixels en staat op positie 10,10.
+  De afstand tussen de twee middelpunten is 14.14 pixels. Ze botsen nu wel.
+
+4 Tips
+
+  - Een gevalletje middelbare school dejavu.
+  - gelukkig bevat java.awt.geom.Point2D handige routines.

@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Editable: TwodokuSolver.java
+Monospaced: True
+TestClass: TwodokuTester
+SubmitClass: TwodokuTester
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+Author: E.Hooijmeijer
+DisplayName: Two-Doku
+Icon: twodoku-icon.png
+Solution: twodokuCase.solution
+AuthorURL: http://www.2en40.nl
+Fun: 3
+Quality: 4
+Difficulty: 4
+Hint: Where there were three are now two.
+Catagory: Algorithm, Puzzle solving.

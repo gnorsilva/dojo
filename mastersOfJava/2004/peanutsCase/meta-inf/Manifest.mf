@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Editable: PeanutValidatorImpl.java
+Monospaced: True
+TestClass: PeanutValidatorChecker
+SubmitClass: PeanutValidatorChecker
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+Author: R.Bor
+AuthorURL: http://www.qjes.com
+Fun: 4
+Quality: 4
+Difficulty: 1
+Hint: Zeker geen eitje
+Catagory: Object validation
+Icon: peanuts-icon.png

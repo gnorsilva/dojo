@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Editable: CopierImpl.java
+Monospaced: True
+TestClass: CopierChecker
+SubmitClass: CopierChecker
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+SecurityDelegate: CopierSecurity
+Author: R.Bor
+AuthorURL: http://www.qjes.com
+Fun: 4
+Quality: 3
+Difficulty: 3
+Hint: No I am not a clown.
+Catagory: String manipulation
+Icon: copier-icon.png

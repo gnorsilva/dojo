@@ -1,0 +1,45 @@
+1 Inleiding
+
+  Dr. Wong, een bekende oogarts uit zuid-Laren, 
+  had een klant die kleuren niet kon ontwaren. 
+  Het is lastig zien wat hij ziet,
+  en voor mij is het dat dus niet.
+  En dus moet jij de boel voor hem klaren. 
+
+2 Opdracht
+
+  Implementeer Dr. Wong zijn kleuren toolkit.
+
+  Implementeer de makeGrayscale methode welke een gegeven 
+  kleuren Bitmap omzet naar een vergelijkbare Bitmap met 
+  grijswaarden. Bepaal de grijswaarde door middel van het 
+  berekenen van het gemiddelde van de individuele kleuren 
+  componenten (rood,groen,blauw). 
+  
+  Implementeer de makeBlurred methode welke een gegeven Bitmap
+  omzet naar een vervaagde Bitmap. Bepaal de waarde voor iedere
+  pixel door het gemiddelde te nemen van de 9 pixels op en 
+  rondom die pixel. Wanneer een benodigde waarde buiten de bitmap
+  valt kan je daarvoor grijs (R=128,G=128,B=128) nemen.
+  
+
+3 Voorbeeld
+
+  Gegeven een kleur met de volgende RGB componenten : R=255,G=128,B=0
+  Om deze kleur om te vormen naar een grijswaarde moet het gemiddelde
+  bepaald worden van de 3 kleur kanalen : (R+G+B)/3
+  In het voorbeeld is dat (255+128+0)/3 = 127,66666
+  Afgerond wordt dat dan : R=128,G=128,B=128 
+  
+  Voor het vervagen van een pixel pak je de kleurwaarden van de huidige 
+  pixel plus de pixels direct daar omheen. Je telt ze per kleur kanaal 
+  bijelkaarop en deelt het resultaat door 9. De kleur waarden die je dan 
+  krijgt levert de nieuwe kleur.
+
+4 Tips
+
+  -  In het scherm rechts onderin worden de resultaten van de test 
+     getoond. Linksboven in dit scherm staat de originele bitmap,
+     linksonder staat de door jou gegenereerde bitmap en rechtsonder
+     staat de verwachte bitmap.
+  

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Editable: SudokuSolutionChecker.java
+Monospaced: True
+TestClass: SudokuTester
+SubmitClass: SudokuTester
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+SponsorImage: sponsor-42-image.png
+Icon: sudoku.png
+Author: E.Hooijmeijer
+DisplayName: Sudoku
+Solution: sudokuCase.solution
+AuthorURL: http://www.2en40.nl
+Fun: 3
+Quality: 4
+Difficulty: 3
+Hint: Sudoku puzzle verification.
+Catagory: Algorithm.

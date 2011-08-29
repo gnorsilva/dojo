@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Editable: LoadBalancerImpl.java
+Monospaced: True
+TestClass: LoadBalancerChecker
+SubmitClass: LoadBalancerChecker
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+Author: R.Bor
+AuthorURL: http://www.qjes.com
+Fun: 4
+Quality: 5
+Difficulty: 3
+Hint: Keep your balance says Emile R.
+Catagory: Logic 
+Icon: loadbalancer-64x64.png

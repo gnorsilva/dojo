@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Editable: LookupReplacer.java
+Monospaced: true
+TestClass: RegExTester
+SubmitClass: RegExTester
+TestClassTimeout: 15
+SubmitClassTimeout: 20
+Author: Peter van den Berkmortel
+DisplayName: Replacer Case
+Icon: icon.png
+SponsorImage: sponsor.png
+Solution: RegExCase.solution
+AuthorURL: http://www.sogeti.nl
+Fun: 4
+Quality: 3
+Difficulty: 2
+Hint: Don't just replace everything. It's got to match first!
+Catagory: API Knowledge
