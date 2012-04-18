@@ -8,6 +8,8 @@ import static org.junit.Assert.assertThat;
 
 public class BowlingGameShould {
 
+    private final BowlingGame bowlingGame = new BowlingGame();
+
     @Test public void
     calculate_a_score_of_90_for_10_roll_pairs_of_9_and_a_miss() {
         for (int frame = 0; frame < 10; frame++) {
@@ -15,6 +17,14 @@ public class BowlingGameShould {
             roll(0);
         }
         assertThat(score(), is(90));
+    }
+
+    @Test public void
+    calculate_a_score_of_19_when_rolling_a_3_5_and_9() {
+        roll(3);
+        roll(5);
+        roll(9);
+        assertThat(score(), is(17));
     }
 
     @Test public void
@@ -27,7 +37,58 @@ public class BowlingGameShould {
         assertThat(score(), is(150));
     }
 
-    @Ignore
+    @Test public void
+    calculate_a_score_of_21_when_rolling_a_spare_a_4_and_a_3() {
+        roll(3);
+        roll(7);
+        roll(4);
+        roll(3);
+        assertThat(score(), is(21));
+    }
+
+    @Test public void
+    calculate_a_score_of_18_when_rolling_a_spare_and_a_4() {
+        roll(3);
+        roll(7);
+        roll(4);
+        assertThat(score(), is(18));
+    }
+
+    @Test public void
+    calculate_a_score_of_24_when_rolling_a_0_a_strike_a_3_and_a_4() {
+        roll(0);
+        roll(10);
+        roll(3);
+        roll(4);
+        assertThat(score(), is(24));
+    }
+
+    @Test public void
+    calculate_a_score_of_24_when_rolling_a_strike_a_3_and_a_4() {
+        roll(10);
+        roll(3);
+        roll(4);
+        assertThat(score(), is(24));
+    }
+
+
+    @Test public void
+    calculate_a_score_of_30_when_rolling_a_spare_and_a_strike() {
+        roll(3);
+        roll(7);
+        roll(10);
+        assertThat(score(), is(30));
+    }
+
+    @Test public void
+    calculate_a_score_of_38_when_rolling_a_strike_a_spare_and_a_4() {
+        roll(10);
+        roll(3);
+        roll(7);
+        roll(4);
+        assertThat(score(), is(38));
+    }
+
     @Test public void
     calculate_a_score_of_300_for_10_strikes_and_two_extra_rolls_of_10() {
         for (int frame = 0; frame < 10; frame++) {
@@ -38,33 +99,11 @@ public class BowlingGameShould {
         assertThat(score(), is(300));
     }
 
-    int frames [][] = new int[11][2];
-    int frameCounter = 0;
-    boolean firstRoll = true;
-
     private void roll(int pins) {
-        int [] frame = frames[frameCounter];
-        if (firstRoll) {
-            frame[0] = pins;
-        } else {
-            frame[1] = pins;
-            frameCounter++;
-        }
-        firstRoll = !firstRoll;
+        bowlingGame.roll(pins);
     }
 
     private int score() {
-        int totalScore = 0;
-
-        for (int index = 0; index < 10; index++) {
-            int[] frame = frames[index];
-            int frameScore = frame[0] + frame[1];
-            totalScore += frameScore;
-            if (frameScore == 10) {
-                totalScore += frames[index + 1][0];
-            }
-        }
-
-        return totalScore;
+        return bowlingGame.score();
     }
 }
