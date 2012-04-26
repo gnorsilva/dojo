@@ -1,6 +1,6 @@
 package com.gnorsilva;
 
 public enum PotterBooks {
-    A, B, C, D, E;
+    FIRE, EARTH, WATER, AIR, SPIRIT;
     public static double BOOK_PRICE = 10;
 }
