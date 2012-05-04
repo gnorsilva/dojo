@@ -1,15 +1,13 @@
 package com.gnorsilva;
 
-import static com.gnorsilva.TennisMatch.GameScore;
-
 class Player {
-    private GameScore score = GameScore.ZERO;
+    private GamePoint score = GamePoint.ZERO;
 
-    public GameScore score() {
+    public GamePoint score() {
         return score;
     }
 
-    public void setGameScore(GameScore score) {
+    public void setGameScore(GamePoint score) {
         this.score = score;
     }
 }

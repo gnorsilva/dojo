@@ -1,12 +1,8 @@
 package com.gnorsilva;
 
-import static com.gnorsilva.TennisMatch.GameScore.*;
+import static com.gnorsilva.GamePoint.*;
 
 class TennisMatch {
-
-    static enum GameScore {
-        ZERO,FIFTEEN,THIRTY,FORTY,ADVANTAGE;
-    }
 
     private final Player player1;
     private final Player player2;
@@ -17,10 +13,10 @@ class TennisMatch {
     }
 
     public void nextPointWonBy(Player winningPlayer) {
-        GameScore winnerOldScore = winningPlayer.score();
+        GamePoint winnerOldScore = winningPlayer.score();
         Player losingPlayer = getLosingPlayer(winningPlayer);
-        GameScore looserOldScore = losingPlayer.score();
-        GameScore winnerNextScore = getNextGameScore(winnerOldScore, looserOldScore);
+        GamePoint looserOldScore = losingPlayer.score();
+        GamePoint winnerNextScore = getNextGameScore(winnerOldScore, looserOldScore);
         winningPlayer.setGameScore(winnerNextScore);
         if (looserOldScore == ADVANTAGE) {
             losingPlayer.setGameScore(FORTY);
@@ -31,16 +27,12 @@ class TennisMatch {
         return player1 == winningPlayer ? player2 : player1;
     }
 
-    private GameScore getNextGameScore(GameScore winnerOldScore, GameScore looserOldScore) {
-        GameScore nextScore;
-        if (winnerOldScore == FIFTEEN) {
-            nextScore = THIRTY;
-        }else if (winnerOldScore == THIRTY || looserOldScore == ADVANTAGE) {
+    private GamePoint getNextGameScore(GamePoint winnerOldScore, GamePoint looserOldScore) {
+        GamePoint nextScore;
+        if (looserOldScore == ADVANTAGE) {
             nextScore = FORTY;
-        } else if (winnerOldScore == FORTY) {
-            nextScore = ADVANTAGE;
         } else {
-            nextScore = FIFTEEN;
+            nextScore = winnerOldScore.nextPoint();
         }
         return nextScore;
     }

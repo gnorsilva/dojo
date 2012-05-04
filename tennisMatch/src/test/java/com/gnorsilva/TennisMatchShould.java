@@ -1,10 +1,12 @@
 package com.gnorsilva;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-import static com.gnorsilva.TennisMatch.GameScore.*;
+import static com.gnorsilva.GamePoint.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class TennisMatchShould {
 
@@ -95,6 +97,11 @@ public class TennisMatchShould {
         match.nextPointWonBy(mcEnroe);
         assertThat(mcEnroe.score(), is(FORTY));
         assertThat(bjornBorg.score(), is(FORTY));
+    }
+
+    @Test
+    public void set_mcEnroe_score_to_be_zero_when_mcEnroe_wins_the_next_point_to_win_the_current_game() throws Exception {
+        fail("not implemented yet");
     }
 
 }
