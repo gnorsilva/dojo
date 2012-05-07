@@ -1,13 +1,23 @@
 package com.gnorsilva;
 
 class Player {
-    private GamePoint score = GamePoint.ZERO;
 
-    public GamePoint score() {
-        return score;
+    private Points points = Points.ZERO;
+    private Games games = Games.ZERO;
+
+    public void setPoints(Points points) {
+        this.points = points;
     }
 
-    public void setGameScore(GamePoint score) {
-        this.score = score;
+    public Points points() {
+        return points;
+    }
+
+    public void setGames(Games games) {
+        this.games = games;
+    }
+
+    public Games games() {
+        return games;
     }
 }

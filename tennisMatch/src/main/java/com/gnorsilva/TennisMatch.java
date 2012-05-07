@@ -1,6 +1,6 @@
 package com.gnorsilva;
 
-import static com.gnorsilva.GamePoint.*;
+import static com.gnorsilva.Points.*;
 
 class TennisMatch {
 
@@ -13,27 +13,44 @@ class TennisMatch {
     }
 
     public void nextPointWonBy(Player winningPlayer) {
-        GamePoint winnerOldScore = winningPlayer.score();
         Player losingPlayer = getLosingPlayer(winningPlayer);
-        GamePoint looserOldScore = losingPlayer.score();
-        GamePoint winnerNextScore = getNextGameScore(winnerOldScore, looserOldScore);
-        winningPlayer.setGameScore(winnerNextScore);
-        if (looserOldScore == ADVANTAGE) {
-            losingPlayer.setGameScore(FORTY);
+        Points winnerOldPoints = winningPlayer.points();
+        Points looserOldPoints = losingPlayer.points();
+        Points winnerNextScore = getNextPoints(winnerOldPoints, looserOldPoints);
+        winningPlayer.setPoints(winnerNextScore);
+        setLosingPlayerPoints(losingPlayer, looserOldPoints, winnerNextScore);
+
+
+        if (winnerNextScore == ZERO) {
+            winningPlayer.setGames(winningPlayer.games().next());
         }
     }
 
     private Player getLosingPlayer(Player winningPlayer) {
-        return player1 == winningPlayer ? player2 : player1;
+        if (player1 == winningPlayer) {
+            return player2;
+        } else {
+            return player1;
+        }
     }
 
-    private GamePoint getNextGameScore(GamePoint winnerOldScore, GamePoint looserOldScore) {
-        GamePoint nextScore;
+    private Points getNextPoints(Points winnerOldScore, Points looserOldScore) {
+        Points points;
         if (looserOldScore == ADVANTAGE) {
-            nextScore = FORTY;
+            points = FORTY;
+        } else if (winnerOldScore == FORTY && looserOldScore != FORTY) {
+            points = ZERO;
         } else {
-            nextScore = winnerOldScore.nextPoint();
+            points = winnerOldScore.next();
         }
-        return nextScore;
+        return points;
+    }
+
+    private void setLosingPlayerPoints(Player losingPlayer, Points looserOldScore, Points winnerNextScore) {
+        if (winnerNextScore == ZERO) {
+            losingPlayer.setPoints(ZERO);
+        } else if (looserOldScore == ADVANTAGE) {
+            losingPlayer.setPoints(FORTY);
+        }
     }
 }
