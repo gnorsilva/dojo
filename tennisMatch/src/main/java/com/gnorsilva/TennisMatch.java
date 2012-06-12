@@ -14,7 +14,7 @@ class TennisMatch {
 
     public void nextPointWonBy(Player winningPlayer) {
         Player losingPlayer = getLosingPlayer(winningPlayer);
-        setNextPointsScore(winningPlayer, losingPlayer);
+        new PlayersNextPoints(winningPlayer, losingPlayer).set();
         if (aGameHasBeenWon()) {
             calculateNextGameScore(winningPlayer);
         }
@@ -26,41 +26,6 @@ class TennisMatch {
         } else {
             return player1;
         }
-    }
-
-    private void setNextPointsScore(Player winner, Player loser) {
-        Points winnerOldPoints = winner.points();
-        Points loserOldPoints = loser.points();
-
-        Points winnerNextPoints = getWinnerNextPoints(winnerOldPoints, loserOldPoints);
-        winner.setPoints(winnerNextPoints);
-
-        Points looserNextPoints = getLooserNextPoints(loserOldPoints, winnerNextPoints);
-        loser.setPoints(looserNextPoints);
-    }
-
-    private Points getWinnerNextPoints(Points winnerOldPoints, Points looserOldPoints) {
-        Points points;
-        if (looserOldPoints == ADVANTAGE) {
-            points = FORTY;
-        } else if (winnerOldPoints == FORTY && looserOldPoints != FORTY) {
-            points = ZERO;
-        } else {
-            points = winnerOldPoints.next();
-        }
-        return points;
-    }
-
-    private Points getLooserNextPoints(Points looserOldPoints, Points winnerPoints) {
-        Points points;
-        if (winnerPoints == ZERO) {
-            points = ZERO;
-        } else if (looserOldPoints == ADVANTAGE) {
-            points = FORTY;
-        } else {
-            points = looserOldPoints;
-        }
-        return points;
     }
 
     private boolean aGameHasBeenWon() {
