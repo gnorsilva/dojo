@@ -21,106 +21,17 @@ public class TennisMatchShould {
     }
 
     @Test
-    public void set_mcEnroe_points_to_be_fifteen_when_winning_one_point() throws Exception {
+    public void increase_a_players_points_when_he_wins_the_next_point() throws Exception {
+        mcEnroe.setPoints(THIRTY);
         match.nextPointWonBy(mcEnroe);
-        assertThat(mcEnroe.points(), is(FIFTEEN));
-        assertThat(bjornBorg.points(), is(ZERO));
+        assertThat(mcEnroe.points(), is(FORTY));
     }
 
     @Test
-    public void set_both_players_points_to_be_fifteen_when_they_each_win_one_point() throws Exception {
-        match.nextPointWonBy(mcEnroe);
-        match.nextPointWonBy(bjornBorg);
-        assertThat(mcEnroe.points(), is(FIFTEEN));
-        assertThat(bjornBorg.points(), is(FIFTEEN));
-    }
-
-    @Test
-    public void set_mcEnroe_points_to_be_thirty_when_winning_two_points() throws Exception {
-        mcEnroe.setPoints(FIFTEEN);
-        match.nextPointWonBy(mcEnroe);
-        assertThat(mcEnroe.points(), is(THIRTY));
-        assertThat(bjornBorg.points(), is(ZERO));
-    }
-
-    @Test
-    public void set_both_players_points_to_be_thirty_when_they_each_win_two_points() throws Exception {
-        mcEnroe.setPoints(FIFTEEN);
-        match.nextPointWonBy(mcEnroe);
+    public void NOT_increase_a_players_points_if_he_does_not_win_the_next_point() throws Exception {
         bjornBorg.setPoints(FIFTEEN);
-        match.nextPointWonBy(bjornBorg);
-        assertThat(mcEnroe.points(), is(THIRTY));
-        assertThat(bjornBorg.points(), is(THIRTY));
-    }
-
-    @Test
-    public void set_mcEnroe_points_to_be_forty_when_winning_three_points() throws Exception {
-        mcEnroe.setPoints(THIRTY);
         match.nextPointWonBy(mcEnroe);
-        assertThat(mcEnroe.points(), is(FORTY));
-        assertThat(bjornBorg.points(), is(ZERO));
-    }
-
-    @Test
-    public void set_both_players_points_to_be_forty_when_they_each_win_three_points() throws Exception {
-        mcEnroe.setPoints(THIRTY);
-        bjornBorg.setPoints(THIRTY);
-        match.nextPointWonBy(mcEnroe);
-        match.nextPointWonBy(bjornBorg);
-        assertThat(mcEnroe.points(), is(FORTY));
-        assertThat(bjornBorg.points(), is(FORTY));
-    }
-
-    @Test
-    public void set_mcEnroe_points_to_be_advantage_when_winning_the_next_point_and_players_are_in_deuce() throws Exception {
-        mcEnroe.setPoints(FORTY);
-        bjornBorg.setPoints(FORTY);
-        match.nextPointWonBy(mcEnroe);
-        assertThat(mcEnroe.points(), is(ADVANTAGE));
-    }
-
-    @Test
-    public void set_borg_points_to_be_forty_when_winning_the_next_point_and_mcEnroe_had_advantage() throws Exception {
-        mcEnroe.setPoints(ADVANTAGE);
-        bjornBorg.setPoints(FORTY);
-        match.nextPointWonBy(bjornBorg);
-        assertThat(bjornBorg.points(), is(FORTY));
-    }
-
-    @Test
-    public void set_both_players_points_to_be_forty_when_bjorg_wins_the_next_point_and_mcEnroe_had_advantage() throws Exception {
-        mcEnroe.setPoints(ADVANTAGE);
-        bjornBorg.setPoints(FORTY);
-        match.nextPointWonBy(bjornBorg);
-        assertThat(mcEnroe.points(), is(FORTY));
-        assertThat(bjornBorg.points(), is(FORTY));
-    }
-
-    @Test
-    public void set_both_players_points_to_be_forty_when_mcEnroe_wins_the_next_point_and_bjorg_had_advantage() throws Exception {
-        bjornBorg.setPoints(ADVANTAGE);
-        mcEnroe.setPoints(FORTY);
-        match.nextPointWonBy(mcEnroe);
-        assertThat(mcEnroe.points(), is(FORTY));
-        assertThat(bjornBorg.points(), is(FORTY));
-    }
-
-    @Test
-    public void set_both_players_points_to_be_zero_when_mcEnroe_is_in_advantage_and_wins_the_next_point() throws Exception {
-        mcEnroe.setPoints(ADVANTAGE);
-        bjornBorg.setPoints(FORTY);
-        match.nextPointWonBy(mcEnroe);
-        assertThat(mcEnroe.points(), is(ZERO));
-        assertThat(bjornBorg.points(), is(ZERO));
-    }
-
-    @Test
-    public void set_both_players_points_to_be_zero_when_mcEnroe_has_forty_points_and_wins_the_next_point() throws Exception {
-        mcEnroe.setPoints(FORTY);
-        bjornBorg.setPoints(ZERO);
-        match.nextPointWonBy(mcEnroe);
-        assertThat(mcEnroe.points(), is(ZERO));
-        assertThat(bjornBorg.points(), is(ZERO));
+        assertThat(bjornBorg.points(), is(FIFTEEN));
     }
 
     @Test
@@ -130,11 +41,26 @@ public class TennisMatchShould {
     }
 
     @Test
-    public void increase_mcEnroes_game_score_by_one_when_he_wins_a_game() throws Exception {
-        mcEnroe.setGames(Games.ZERO);
+    public void increase_a_players_game_score_by_one_when_he_wins_a_game() throws Exception {
+        mcEnroe.setGames(Games.THREE);
         mcEnroe.setPoints(FORTY);
         match.nextPointWonBy(mcEnroe);
-        assertThat(mcEnroe.games(), is(Games.ONE));
+        assertThat(mcEnroe.games(), is(Games.FOUR));
+    }
+
+    @Test
+    public void NOT_increase_a_players_game_score_by_one_when_he_loses_a_game() throws Exception {
+        mcEnroe.setGames(Games.THREE);
+        bjornBorg.setGames(Games.TWO);
+        mcEnroe.setPoints(FORTY);
+        match.nextPointWonBy(mcEnroe);
+        assertThat(bjornBorg.games(), is(Games.TWO));
+    }
+
+    @Test
+    public void NOT_increase_a_players_game_score_when_he_wins_the_first_point() throws Exception {
+        match.nextPointWonBy(mcEnroe);
+        assertThat(mcEnroe.games(), is(Games.ZERO));
     }
 
 }

@@ -16,7 +16,7 @@ class TennisMatch {
         Player losingPlayer = getLosingPlayer(winningPlayer);
         new PlayersNextPoints(winningPlayer, losingPlayer).set();
         if (aGameHasBeenWon()) {
-            calculateNextGameScore(winningPlayer);
+            new PlayersNextGameScore(winningPlayer, losingPlayer).set();
         }
     }
 
@@ -32,7 +32,4 @@ class TennisMatch {
         return player1.points() == ZERO && player2.points() == ZERO;
     }
 
-    private void calculateNextGameScore(Player winningPlayer) {
-        winningPlayer.setGames(winningPlayer.games().next());
-    }
 }
