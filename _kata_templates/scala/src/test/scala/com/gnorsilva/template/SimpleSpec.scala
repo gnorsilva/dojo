@@ -12,7 +12,7 @@ class SimpleSpec extends WordSpec with ShouldMatchers {
     val something: Something = new Something
 
     "know the truth" in {
-      something.know_the_truth should be(true)
+      something.know_the_truth should equal(true)
     }
   }
 
