@@ -8,10 +8,10 @@ class Controller {
     }
 
     public void handle(Request request) {
-        if (elevator.currentFloor() != request.floor) {
+        if (!elevator.currentFloor().equals(request.floor)) {
             if (elevator.isMoving()) {
-                int currentDelta = Math.abs(elevator.currentFloor() - elevator.nextDestination());
-                int possibleDelta = Math.abs(elevator.currentFloor() - request.floor);
+                int currentDelta = Math.abs(elevator.currentFloor().value - elevator.nextDestination().value);
+                int possibleDelta = Math.abs(elevator.currentFloor().value - request.floor.value);
                 if (possibleDelta < currentDelta) {
                     elevator.setNextDestination(request.floor);
                 } else {

@@ -4,31 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Elevator {
-    private final List<Integer> nextDestinations = new ArrayList<Integer>();
+    private final List<Floor> nextDestinations = new ArrayList<Floor>();
 
-    private int currentFloor;
+    private Floor currentFloor;
 
-    public Elevator(int floor) {
+    public Elevator(Floor floor) {
         this.currentFloor = floor;
     }
 
-    public int currentFloor() {
+    public Floor currentFloor() {
         return currentFloor;
     }
 
-    public List<Integer> nextDestinations() {
+    public List<Floor> nextDestinations() {
         return nextDestinations;
     }
 
-    public int nextDestination() {
+    public Floor nextDestination() {
         return nextDestinations.get(0);
     }
 
-    public void queueFutureDestination(int floor) {
+    public void queueFutureDestination(Floor floor) {
         nextDestinations.add(floor);
     }
 
-    public void setNextDestination(int floor) {
+    public void setNextDestination(Floor floor) {
         nextDestinations.add(0,floor);
     }
 
