@@ -1,0 +1,5 @@
+* an elevator responds to calls containing a source floor and direction
+* an elevator delivers passengers to requested floors
+* elevator calls are queued not necessarily FIFO
+* there can be more than one elevator
+* you may validate passenger floor requests

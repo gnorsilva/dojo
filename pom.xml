@@ -80,6 +80,7 @@
     <module>bowling_game</module>
     <module>potter_books</module>
     <module>tennis_match</module>
+    <module>elevator</module>
 	</modules>
 
 </project>
