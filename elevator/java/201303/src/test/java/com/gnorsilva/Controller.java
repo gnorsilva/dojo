@@ -8,15 +8,9 @@ class Controller {
     }
 
     public void handle(Request request) {
-        if (!elevator.currentFloor().equals(request.floor)) {
-            if (elevator.isMoving()) {
-                int currentDelta = Math.abs(elevator.currentFloor().value - elevator.nextDestination().value);
-                int possibleDelta = Math.abs(elevator.currentFloor().value - request.floor.value);
-                if (possibleDelta < currentDelta) {
-                    elevator.setNextDestination(request.floor);
-                } else {
-                    elevator.queueFutureDestination(request.floor);
-                }
+        if (elevator.currentFloor().isNot(request.floor)) {
+            if (elevator.isMoving() && request.floor.isBetween(elevator.currentFloor(), elevator.nextDestination())) {
+                elevator.setNextDestination(request.floor);
             } else {
                 elevator.queueFutureDestination(request.floor);
             }
