@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Collections.EMPTY_LIST;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -17,7 +16,7 @@ public class ControllerShould {
         Controller controller = new Controller(elevator);
         Request request = new Request(new Floor(0), Direction.UP);
         controller.handle(request);
-        assertThat(elevator.nextDestinations(), equalTo(EMPTY_LIST));
+        assertThat(elevator.nextDestinations(), equalTo(floor(0)));
     }
 
     @Test
@@ -47,6 +46,16 @@ public class ControllerShould {
         Request request = new Request(new Floor(3), Direction.DOWN);
         controller.handle(request);
         assertThat(elevator.nextDestinations(), equalTo(floors(3, 1)));
+    }
+
+    @Test
+    public void stop_a_moving_elevator_at_the_current_floor_if_there_is_a_request_from_that_floor() throws Exception {
+        Elevator elevator = new Elevator(new Floor(2));
+        elevator.queueFutureDestination(new Floor(5));
+        Controller controller = new Controller(elevator);
+        Request request = new Request(new Floor(2), Direction.DOWN);
+        controller.handle(request);
+        assertThat(elevator.nextDestinations(), equalTo(floors(2, 5)));
     }
 
     private List<Floor> floor(int floor) {

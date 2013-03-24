@@ -12,20 +12,21 @@ public class Floor {
         return o instanceof Floor && ((Floor) o).value == value;
     }
 
-    public boolean isNot(Floor other) {
-        return !equals(other);
+    @Override
+    public String toString() {
+        return value + "";
     }
 
     public boolean isBetween(Floor a, Floor b) {
-        return (above(a) && below(b)) ||
-               (above(b) && below(a));
+        return (isAbove(a) && isBelow(b)) ||
+               (isAbove(b) && isBelow(a));
     }
 
-    private boolean above(Floor other) {
+    private boolean isAbove(Floor other) {
         return value > other.value;
     }
 
-    private boolean below(Floor other) {
+    private boolean isBelow(Floor other) {
         return value < other.value;
     }
 }
