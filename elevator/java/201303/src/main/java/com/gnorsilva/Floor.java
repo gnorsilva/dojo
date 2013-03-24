@@ -17,8 +17,15 @@ public class Floor {
     }
 
     public boolean isBetween(Floor a, Floor b) {
-        int currentDelta = Math.abs(a.value - b.value);
-        int possibleDelta = Math.abs(a.value - value);
-        return possibleDelta < currentDelta;
+        return (above(a) && below(b)) ||
+               (above(b) && below(a));
+    }
+
+    private boolean above(Floor other) {
+        return value > other.value;
+    }
+
+    private boolean below(Floor other) {
+        return value < other.value;
     }
 }
