@@ -8,8 +8,8 @@ class Controller {
     }
 
     public void handle(Request request) {
-        if (elevator.currentFloor().equals(request.floor) && canStopAtCurrentFloor(request) ||
-            (elevator.isMoving() && request.floor.isBetween(elevator.currentFloor(), elevator.nextDestination()))) {
+        if ((elevator.currentFloor().equals(request.floor) && elevator.isStopped()) ||
+            (elevator.isMoving() && nextDestinationDirectionMatches(request.direction))) {
 
             elevator.setNextDestination(request.floor);
         } else {
@@ -17,15 +17,13 @@ class Controller {
         }
     }
 
-    private boolean canStopAtCurrentFloor(Request request) {
-        return (elevator.isStopped() || nextDestinationDirectionMatches(request.direction));
-    }
-
     private boolean nextDestinationDirectionMatches(Direction direction) {
+        Floor current = elevator.currentFloor();
+        Floor next = elevator.nextDestination();
         if (direction == Direction.DOWN) {
-            return elevator.currentFloor().isAbove(elevator.nextDestination());
+            return current.isAbove(next);
         } else {
-            return elevator.currentFloor().isBelow(elevator.nextDestination());
+            return current.isBelow(next);
         }
     }
 }

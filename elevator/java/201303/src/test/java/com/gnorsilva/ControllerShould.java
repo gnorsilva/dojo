@@ -1,17 +1,15 @@
 package com.gnorsilva;
 
-import org.junit.Ignore;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.Test;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
 public class ControllerShould {
 
-    @Ignore
     @Test
     public void not_move_an_idle_elevator_when_the_request_is_from_that_floor() throws Exception {
         Elevator elevator = new Elevator(new Floor(0));
@@ -51,6 +49,16 @@ public class ControllerShould {
     }
 
     @Test
+    public void queue_a_floor_if_the_request_is_on_the_way_to_the_next_destination_but_not_in_the_same_direction() throws Exception {
+        Elevator elevator = new Elevator(new Floor(5));
+        elevator.queueFutureDestination(new Floor(1));
+        Controller controller = new Controller(elevator);
+        Request request = new Request(new Floor(3), Direction.UP);
+        controller.handle(request);
+        assertThat(elevator.nextDestinations(), equalTo(floors(1, 3)));
+    }
+
+    @Test
     public void stop_a_moving_elevator_at_the_current_floor_if_there_is_a_request_from_that_floor_for_the_same_direction() throws Exception {
         Elevator elevator = new Elevator(new Floor(2));
         elevator.queueFutureDestination(new Floor(5));
@@ -74,7 +82,7 @@ public class ControllerShould {
         return floors(floor);
     }
 
-    private List<Floor> floors(int ... values) {
+    private List<Floor> floors(int... values) {
         ArrayList<Floor> floors = new ArrayList<Floor>();
         for (int v : values) {
             floors.add(new Floor(v));
