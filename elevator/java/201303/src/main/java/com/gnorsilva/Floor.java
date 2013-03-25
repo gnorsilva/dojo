@@ -22,11 +22,11 @@ public class Floor {
                (isAbove(b) && isBelow(a));
     }
 
-    private boolean isAbove(Floor other) {
+    public boolean isAbove(Floor other) {
         return value > other.value;
     }
 
-    private boolean isBelow(Floor other) {
+    public boolean isBelow(Floor other) {
         return value < other.value;
     }
 }

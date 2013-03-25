@@ -30,6 +30,4 @@ public class FloorShould {
     public void know_when_its_NOT_between_two_descending_floors() throws Exception {
         assertFalse(_4.isBetween(_3, _1));
     }
-
-
 }

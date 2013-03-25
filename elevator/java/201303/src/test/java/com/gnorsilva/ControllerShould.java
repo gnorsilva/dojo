@@ -1,5 +1,6 @@
 package com.gnorsilva;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import static org.junit.Assert.assertThat;
 
 public class ControllerShould {
 
+    @Ignore
     @Test
     public void not_move_an_idle_elevator_when_the_request_is_from_that_floor() throws Exception {
         Elevator elevator = new Elevator(new Floor(0));
@@ -49,13 +51,23 @@ public class ControllerShould {
     }
 
     @Test
-    public void stop_a_moving_elevator_at_the_current_floor_if_there_is_a_request_from_that_floor() throws Exception {
+    public void stop_a_moving_elevator_at_the_current_floor_if_there_is_a_request_from_that_floor_for_the_same_direction() throws Exception {
+        Elevator elevator = new Elevator(new Floor(2));
+        elevator.queueFutureDestination(new Floor(5));
+        Controller controller = new Controller(elevator);
+        Request request = new Request(new Floor(2), Direction.UP);
+        controller.handle(request);
+        assertThat(elevator.nextDestinations(), equalTo(floors(2, 5)));
+    }
+
+    @Test
+    public void queue_a_destination_if_an_elevator_is_at_the_request_floor_but_moving_in_the_opposite_direction() throws Exception {
         Elevator elevator = new Elevator(new Floor(2));
         elevator.queueFutureDestination(new Floor(5));
         Controller controller = new Controller(elevator);
         Request request = new Request(new Floor(2), Direction.DOWN);
         controller.handle(request);
-        assertThat(elevator.nextDestinations(), equalTo(floors(2, 5)));
+        assertThat(elevator.nextDestinations(), equalTo(floors(5, 2)));
     }
 
     private List<Floor> floor(int floor) {

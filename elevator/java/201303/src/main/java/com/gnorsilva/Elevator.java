@@ -35,4 +35,8 @@ public class Elevator {
     public boolean isMoving() {
         return nextDestinations.size() > 0;
     }
+
+    public boolean isStopped() {
+        return !isMoving();
+    }
 }
