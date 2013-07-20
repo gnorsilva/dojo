@@ -1,5 +1,5 @@
 class Skeleton
-  def walks
+  def walking?
     true
   end
 end

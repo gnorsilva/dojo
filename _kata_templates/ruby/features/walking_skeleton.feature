@@ -4,5 +4,5 @@ Feature: Walking skeleton
 
   Scenario: Walking Skeleton
     Given A Skeleton
-    When I ask it to walk
-    Then It should tell me its true
+    When I ask if it is walking
+    Then It should tell me it is
